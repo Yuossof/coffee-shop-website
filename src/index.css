@@ -1,0 +1,51 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-maroon: #410416;
+  --color-wine: #5d1a2a;
+  --color-pink: #dc7f8f;
+  --color-heading-brown: #231a11;
+  --color-body-brown: #534344;
+  --color-muted-brown: #745853;
+  --color-faint-brown: #867274;
+  --color-cream: #fff8f5;
+  --color-peach: #feeadc;
+  --color-peach-2: #f8e5d7;
+  --color-border-pink: rgba(217, 193, 195, 0.5);
+  --color-border-pink-30: rgba(217, 193, 195, 0.3);
+  --color-input-border: #6b7280;
+  --color-dark-bg: #201d17;
+
+  /* Editorial palette used by the Home page hero/story sections */
+  --color-ink: #18140f;
+  --color-ink-soft: #6b6155;
+  --color-paper: #faf7f1;
+  --color-oxblood: #6b1d1d;
+  --color-gold: #c9a15a;
+  --color-line: #e4ddcf;
+
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Work Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  --font-display: 'Fraunces', serif;
+  --font-ui: 'Inter', -apple-system, Roboto, Helvetica, sans-serif;
+  --font-label: 'JetBrains Mono', ui-monospace, monospace;
+
+  --shadow-soft: 0 4px 20px 0 rgba(62, 39, 35, 0.08);
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-body-brown);
+  background: var(--color-cream);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--color-heading-brown);
+}
