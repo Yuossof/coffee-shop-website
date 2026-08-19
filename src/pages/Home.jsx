@@ -50,49 +50,50 @@ function Home() {
     <div id="top">
       <Navbar />
 
-      <section className="overflow-hidden py-12 pb-24 md:pt-22">
-        <Container className="flex flex-col items-center gap-8 md:flex-row md:gap-16">
-          <div className="flex flex-1 flex-col items-start gap-6 md:pr-8">
-            <span className="relative pb-2.5 font-label text-xs font-medium uppercase tracking-[2px] text-oxblood after:absolute after:bottom-0 after:left-0 after:h-px after:w-8 after:bg-oxblood">
-              Est. 2024
-            </span>
-            <h1 className="font-display text-[40px] font-medium leading-[1.05] tracking-[-1.5px] text-ink md:text-[60px]">
-              Artisanal Coffee &amp;
+      <section className="overflow-hidden border-b border-line py-10 md:py-16">
+        <Container className="grid items-end gap-10 md:grid-cols-[0.9fr_1.1fr] md:gap-16">
+          <div className="flex flex-col items-start gap-6 md:pb-8">
+            <div className="flex items-center gap-3 font-label text-[11px] font-medium uppercase tracking-[2px] text-oxblood">
+              <span className="h-px w-8 bg-oxblood" />
+              Est. 2024 · Slow mornings
+            </div>
+            <h1 className="max-w-[620px] font-display text-[48px] font-medium leading-[0.98] tracking-[-2px] text-ink md:text-[76px]">
+              Your daily ritual,
               <br />
-              Hand-Crafted
-              <br />
-              Pastries
+              <span className="text-oxblood">made by hand.</span>
             </h1>
-            <p className="max-w-[420px] font-ui text-base leading-relaxed text-ink-soft md:text-[17px]">
-              Savor the moment in our cozy corner. Handmade coffee, soft
-              sourdoughs, and slow-fermented pastries — crafted each morning
-              to bring a touch of quiet luxury to your daily ritual.
+            <p className="max-w-[410px] font-ui text-base leading-relaxed text-ink-soft md:text-[17px]">
+              Small-batch coffee, long-fermented breads, and pastries pulled
+              from the oven before the day begins.
             </p>
-            <div className="flex w-full items-center gap-4 pt-3 sm:w-auto sm:flex-row">
-              <Button to="/menu" variant="primary">
-                View Menu
-              </Button>
-              <Button variant="outline">Order Online</Button>
+            <div className="flex w-full items-center gap-4 pt-2 sm:w-auto">
+              <Button to="/menu" variant="primary">Explore the menu</Button>
+              <a href="#story" className="inline-flex items-center border-b border-oxblood pb-1 font-label text-[12px] uppercase tracking-[1px] text-oxblood">
+                Our story
+              </a>
+            </div>
+            <div className="mt-4 grid w-full max-w-[410px] grid-cols-2 border-y border-line py-4 sm:grid-cols-3 sm:gap-5">
+              <div><p className="font-display text-xl text-ink">6:00</p><p className="font-label text-[10px] uppercase tracking-[1px] text-ink-soft">Oven on</p></div>
+              <div><p className="font-display text-xl text-ink">48h</p><p className="font-label text-[10px] uppercase tracking-[1px] text-ink-soft">Fermentation</p></div>
+              <div className="hidden sm:block"><p className="font-display text-xl text-ink">100%</p><p className="font-label text-[10px] uppercase tracking-[1px] text-ink-soft">Care</p></div>
             </div>
           </div>
 
-          <div className="relative w-full flex-1 before:absolute before:-left-5 before:right-5 before:bottom-[-20px] before:top-5 before:z-0 before:rounded-3xl before:bg-gold before:content-[''] md:h-[640px]">
-            <div className="relative h-[280px] w-full md:h-full">
+          <div className="relative min-h-[420px] md:min-h-[620px]">
+            <div className="absolute -right-5 top-5 h-full w-[calc(100%-20px)] border border-gold bg-gold" />
+            <div className="relative z-10 h-full min-h-[420px] overflow-hidden border border-ink bg-paper md:min-h-[620px]">
               <img
                 src="https://api.builder.io/api/v1/image/assets/TEMP/d8b655d97a49cd5daa2d57af77fef0d04138230a?width=1104"
                 alt="Latte and croissant on a wooden table"
-                className="relative z-10 h-full w-full rounded-3xl object-cover border border-ink"
+                className="h-full w-full object-cover"
               />
-              <div className="absolute bottom-6 left-6 z-20 flex max-w-[260px] -rotate-2 items-center gap-3.5 rounded border border-ink bg-paper px-5 py-4 shadow-[0_8px_24px_rgba(24,20,15,0.15)]">
-                <span className="flex shrink-0 text-oxblood">
-                  <IconStar width="14" height="14" />
-                </span>
-                <div>
-                  <p className="font-display text-sm font-semibold text-ink">Freshly Baked</p>
-                  <p className="font-label text-[11px] tracking-[0.4px] text-ink-soft">
-                    Every morning — 6:00 AM
-                  </p>
-                </div>
+              <div className="absolute left-5 top-5 border border-paper bg-oxblood px-4 py-3 text-paper">
+                <p className="font-label text-[10px] uppercase tracking-[1.5px]">Aura Coffee</p>
+                <p className="font-display text-lg leading-none">&amp; Bakes</p>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between border-t border-ink bg-paper px-5 py-4">
+                <div><p className="font-display text-sm text-ink">Fresh from the oven</p><p className="font-label text-[10px] uppercase tracking-[1px] text-ink-soft">Every morning · 6:00 AM</p></div>
+                <IconStar width="16" height="16" className="text-oxblood" />
               </div>
             </div>
           </div>
@@ -130,7 +131,7 @@ function Home() {
       </section>
 
       <Container>
-        <div className="flex flex-col items-center gap-8 border-t border-line py-14 md:flex-row md:gap-18 md:py-24">
+        <div id="story" className="flex flex-col items-center gap-8 border-t border-line py-14 md:flex-row md:gap-18 md:py-24">
           <div className="h-[340px] w-full flex-1 overflow-hidden rounded-[20px] border border-ink shadow-[7px_7px_0_var(--color-gold)] md:h-[560px]">
             <img
               src="https://api.builder.io/api/v1/image/assets/TEMP/e2b8f44aac46a6980a389d28a5d601515cc2cc26?width=1088"
