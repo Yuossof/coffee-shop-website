@@ -51,7 +51,7 @@ function Home() {
       <Navbar />
 
       <section className="overflow-hidden border-b border-line py-10 md:py-16">
-        <Container className="grid items-end gap-10 md:grid-cols-[1fr_1fr] md:gap-8">
+        <Container className="grid items-end gap-10 md:grid-cols-[0.85fr_1.15fr] md:gap-6">
           <div className="flex flex-col items-start gap-6 md:pb-8">
             <div className="flex items-center gap-3 font-label text-[11px] font-medium uppercase tracking-[2px] text-oxblood">
               <span className="h-px w-8 bg-oxblood" />
