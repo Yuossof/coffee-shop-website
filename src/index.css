@@ -1,51 +1,63 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-maroon: #410416;
-  --color-wine: #5d1a2a;
-  --color-pink: #dc7f8f;
-  --color-heading-brown: #231a11;
-  --color-body-brown: #534344;
-  --color-muted-brown: #745853;
-  --color-faint-brown: #867274;
-  --color-cream: #fff8f5;
-  --color-peach: #feeadc;
-  --color-peach-2: #f8e5d7;
-  --color-border-pink: rgba(217, 193, 195, 0.5);
-  --color-border-pink-30: rgba(217, 193, 195, 0.3);
-  --color-input-border: #6b7280;
-  --color-dark-bg: #201d17;
-
-  /* Editorial palette used by the Home page hero/story sections */
-  --color-ink: #18140f;
-  --color-ink-soft: #6b6155;
-  --color-paper: #faf7f1;
-  --color-oxblood: #6b1d1d;
-  --color-gold: #c9a15a;
-  --color-line: #e4ddcf;
-
-  --font-heading: 'Playfair Display', Georgia, serif;
-  --font-body: 'Work Sans', -apple-system, Roboto, Helvetica, sans-serif;
-  --font-display: 'Fraunces', serif;
-  --font-ui: 'Inter', -apple-system, Roboto, Helvetica, sans-serif;
-  --font-label: 'JetBrains Mono', ui-monospace, monospace;
-
-  --shadow-soft: 0 4px 20px 0 rgba(62, 39, 35, 0.08);
+  --color-maroon: #5a1f22;
+  --color-wine: #6f2a2b;
+  --color-pink: #d9a49a;
+  --color-heading-brown: #241d18;
+  --color-body-brown: #5f554b;
+  --color-muted-brown: #806b5f;
+  --color-faint-brown: #a49386;
+  --color-cream: #f7f1e7;
+  --color-peach: #ead8c4;
+  --color-peach-2: #f0e2d2;
+  --color-border-pink: #cdb9a8;
+  --color-border-pink-30: #dfd0c0;
+  --color-input-border: #8c7a6d;
+  --color-dark-bg: #241d18;
+  --color-ink: #241d18;
+  --color-ink-soft: #6f6257;
+  --color-paper: #fbf8f1;
+  --color-oxblood: #5a1f22;
+  --color-gold: #b88b4a;
+  --color-line: #d8c8b8;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body: 'Trebuchet MS', Arial, sans-serif;
+  --font-display: Georgia, 'Times New Roman', serif;
+  --font-ui: 'Trebuchet MS', Arial, sans-serif;
+  --font-label: 'Courier New', ui-monospace, monospace;
 }
 
-body {
-  font-family: var(--font-body);
-  color: var(--color-body-brown);
-  background: var(--color-cream);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+html { background: var(--color-cream); scroll-behavior: smooth; }
+body { margin: 0; font-family: var(--font-body); color: var(--color-body-brown); background: var(--color-cream); -webkit-font-smoothing: antialiased; }
+body::before { content: ''; position: fixed; inset: 0; pointer-events: none; opacity: .16; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E"); z-index: 20; }
+h1,h2,h3,h4 { font-family: var(--font-heading); font-weight: 600; color: var(--color-heading-brown); }
+button,a { transition: transform .18s ease, background-color .18s ease, color .18s ease, border-color .18s ease; }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--color-gold); outline-offset: 3px; }
+::selection { color: var(--color-paper); background: var(--color-oxblood); }
+.frame { border: 1px solid var(--color-ink); box-shadow: 7px 7px 0 var(--color-gold); }
+.paper-card { border: 1px solid var(--color-line); background: var(--color-paper); }
+.label { font-family: var(--font-label); text-transform: uppercase; letter-spacing: .14em; font-size: .72rem; }
+.rule { height: 1px; background: var(--color-line); }
 
-h1,
-h2,
-h3,
-h4 {
-  font-family: var(--font-heading);
-  font-weight: 600;
-  color: var(--color-heading-brown);
-}
+@media (max-width: 640px) { body::before { opacity: .1; } }
+
+@keyframes rise-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+.animate-rise-in { animation: rise-in .7s ease both; }
+
+@theme inline { --font-sans: var(--font-body); --font-serif: var(--font-heading); --font-mono: var(--font-label); }
+
+body { font-family: var(--font-body); }
+.font-heading, .font-display { font-family: var(--font-heading); }
+.font-body, .font-ui { font-family: var(--font-body); }
+.font-label { font-family: var(--font-label); }
+
+/* Keep the darker secondary routes legible while retaining the same paper system. */
+.bg-dark-bg { background: var(--color-cream); }
+.bg-white { background: var(--color-paper); }
+.bg-\[\#fff1e8\] { background: var(--color-peach-2); }
+.shadow-\[var\(--shadow-soft\)\] { box-shadow: 6px 6px 0 var(--color-line); }
+.rounded-2xl, .rounded-3xl, .rounded-\[20px\], .rounded-xl, .rounded-lg { border-radius: 2px; }
+.rounded-full { border-radius: 999px; }

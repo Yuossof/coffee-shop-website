@@ -76,12 +76,12 @@ function Home() {
             </div>
           </div>
 
-          <div className="relative w-full flex-1 before:absolute before:-left-5 before:right-5 before:bottom-[-20px] before:top-5 before:z-0 before:rounded-3xl before:bg-[linear-gradient(135deg,var(--color-gold)_0%,var(--color-oxblood)_100%)] before:content-[''] md:h-[640px]">
+          <div className="relative w-full flex-1 before:absolute before:-left-5 before:right-5 before:bottom-[-20px] before:top-5 before:z-0 before:rounded-3xl before:bg-gold before:content-[''] md:h-[640px]">
             <div className="relative h-[280px] w-full md:h-full">
               <img
                 src="https://api.builder.io/api/v1/image/assets/TEMP/d8b655d97a49cd5daa2d57af77fef0d04138230a?width=1104"
                 alt="Latte and croissant on a wooden table"
-                className="relative z-10 h-full w-full rounded-3xl object-cover shadow-[0_24px_48px_-12px_rgba(122,35,35,0.4)]"
+                className="relative z-10 h-full w-full rounded-3xl object-cover border border-ink"
               />
               <div className="absolute bottom-6 left-6 z-20 flex max-w-[260px] -rotate-2 items-center gap-3.5 rounded border border-ink bg-paper px-5 py-4 shadow-[0_8px_24px_rgba(24,20,15,0.15)]">
                 <span className="flex shrink-0 text-oxblood">
@@ -131,7 +131,7 @@ function Home() {
 
       <Container>
         <div className="flex flex-col items-center gap-8 border-t border-line py-14 md:flex-row md:gap-18 md:py-24">
-          <div className="h-[340px] w-full flex-1 overflow-hidden rounded-[20px] shadow-[0_20px_40px_-16px_rgba(24,20,15,0.25)] md:h-[560px]">
+          <div className="h-[340px] w-full flex-1 overflow-hidden rounded-[20px] border border-ink shadow-[7px_7px_0_var(--color-gold)] md:h-[560px]">
             <img
               src="https://api.builder.io/api/v1/image/assets/TEMP/e2b8f44aac46a6980a389d28a5d601515cc2cc26?width=1088"
               alt="Baker kneading dough"
@@ -173,7 +173,7 @@ function Home() {
       </Container>
 
       <Container>
-        <div className="mb-16 flex flex-col items-start gap-6 rounded-3xl bg-[linear-gradient(135deg,var(--color-oxblood)_0%,#4a1414_100%)] px-8 py-10 shadow-[0_24px_48px_-16px_rgba(107,29,29,0.4)] md:flex-row md:items-center md:justify-between md:px-16 md:py-14">
+        <div className="mb-16 flex flex-col items-start gap-6 rounded-3xl bg-oxblood px-8 py-10 border border-cream md:flex-row md:items-center md:justify-between md:px-16 md:py-14">
           <div className="flex items-center gap-6">
             <span className="flex h-14 w-14 shrink-0 items-center justify-center border border-white/25 text-paper">
               <IconLocationRibbon />

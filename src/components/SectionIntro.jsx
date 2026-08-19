@@ -1,23 +1,2 @@
-function SectionIntro({ tag, title, description, divider, align = 'center' }) {
-  const alignClass =
-    align === 'left' ? 'items-start text-left' : 'items-center text-center'
-
-  return (
-    <div className={`flex flex-col gap-4 ${alignClass}`}>
-      {tag && (
-        <p className="font-label text-xs font-medium uppercase tracking-[2px] text-oxblood">
-          {tag}
-        </p>
-      )}
-      {title && (
-        <h2 className="font-display text-3xl font-medium leading-tight text-ink">{title}</h2>
-      )}
-      {description && (
-        <p className="max-w-[560px] text-base leading-relaxed text-ink-soft">{description}</p>
-      )}
-      {divider && <span className="h-px w-10 bg-oxblood" />}
-    </div>
-  )
-}
-
+function SectionIntro({ tag, title, description, divider, align='center' }) { const alignClass=align==='left'?'items-start text-left':'items-center text-center'; return <div className={`flex flex-col gap-4 ${alignClass}`}>{tag&&<p className="font-label text-[10px] uppercase tracking-[2px] text-oxblood">{tag}</p>}{title&&<h2 className="font-display text-3xl font-medium leading-tight text-ink md:text-4xl">{title}</h2>}{description&&<p className="max-w-[560px] text-base leading-relaxed text-ink-soft">{description}</p>}{divider&&<span className="h-px w-12 bg-oxblood" />}</div> }
 export default SectionIntro
