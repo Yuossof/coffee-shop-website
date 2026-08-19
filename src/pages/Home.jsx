@@ -51,7 +51,7 @@ function Home() {
       <Navbar />
 
       <section className="overflow-hidden border-b border-line py-10 md:py-16">
-        <Container className="grid items-end gap-10 md:grid-cols-[0.9fr_1.1fr] md:gap-16">
+        <Container className="grid items-end gap-10 md:grid-cols-[1.1fr_0.9fr] md:gap-16">
           <div className="flex flex-col items-start gap-6 md:pb-8">
             <div className="flex items-center gap-3 font-label text-[11px] font-medium uppercase tracking-[2px] text-oxblood">
               <span className="h-px w-8 bg-oxblood" />
@@ -79,9 +79,9 @@ function Home() {
             </div>
           </div>
 
-          <div className="relative min-h-[420px] md:min-h-[620px]">
+          <div className="relative min-h-[420px] md:ml-auto md:min-h-[520px] md:w-full md:max-w-[540px]">
             <div className="absolute -right-5 top-5 h-full w-[calc(100%-20px)] border border-gold bg-gold" />
-            <div className="relative z-10 h-full min-h-[420px] overflow-hidden border border-ink bg-paper md:min-h-[620px]">
+            <div className="relative z-10 h-full min-h-[420px] overflow-hidden border border-ink bg-paper md:min-h-[520px]">
               <img
                 src="https://api.builder.io/api/v1/image/assets/TEMP/d8b655d97a49cd5daa2d57af77fef0d04138230a?width=1104"
                 alt="Latte and croissant on a wooden table"
