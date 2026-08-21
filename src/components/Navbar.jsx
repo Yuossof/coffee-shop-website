@@ -5,7 +5,7 @@ import { IconBag } from './Icons.jsx'
 
 const NAV_LINKS = [
   { to: '/menu', label: 'Menu' },
-  { to: null, label: 'Gallery' },
+  { to: '/gallery', label: 'Gallery' },
   { to: '/story', label: 'Story' },
   { to: '/visit', label: 'Visit' },
 ]

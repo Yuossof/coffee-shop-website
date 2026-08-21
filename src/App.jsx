@@ -3,6 +3,7 @@ import Home from './pages/Home.jsx'
 import Menu from './pages/Menu.jsx'
 import Story from './pages/Story.jsx'
 import Visit from './pages/Visit.jsx'
+import Gallery from './pages/Gallery.jsx'
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Route path="/menu" element={<Menu />} />
       <Route path="/story" element={<Story />} />
       <Route path="/visit" element={<Visit />} />
+      <Route path="/gallery" element={<Gallery />} />
     </Routes>
   )
 }
