@@ -76,12 +76,12 @@ function Home() {
             </div>
           </div>
 
-          <div className="relative w-full flex-1 before:absolute before:-left-5 before:right-5 before:bottom-[-20px] before:top-5 before:z-0 before:rounded-3xl before:bg-[linear-gradient(135deg,var(--color-gold)_0%,var(--color-oxblood)_100%)] before:content-[''] md:h-[640px]">
-            <div className="relative h-[280px] w-full md:h-full">
+          <div className="relative w-full flex-1 md:h-[640px]">
+            <div className="relative h-[280px] w-full rounded-2xl border border-line bg-paper p-3 shadow-[0_16px_30px_rgba(67,43,31,0.16)] md:h-full md:p-4">
               <img
                 src="https://api.builder.io/api/v1/image/assets/TEMP/d8b655d97a49cd5daa2d57af77fef0d04138230a?width=1104"
                 alt="Latte and croissant on a wooden table"
-                className="relative z-10 h-full w-full rounded-3xl object-cover shadow-[0_24px_48px_-12px_rgba(122,35,35,0.4)]"
+                className="relative z-10 h-full w-full rounded-xl object-cover"
               />
               <div className="absolute bottom-6 left-6 z-20 flex max-w-[260px] -rotate-2 items-center gap-3.5 rounded border border-ink bg-paper px-5 py-4 shadow-[0_8px_24px_rgba(24,20,15,0.15)]">
                 <span className="flex shrink-0 text-oxblood">

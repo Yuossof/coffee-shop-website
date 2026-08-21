@@ -78,10 +78,10 @@ function Menu() {
               key={filter}
               type="button"
               onClick={() => setActiveFilter(filter)}
-              className={`rounded-full px-6 py-2 text-sm font-semibold leading-5 tracking-[0.7px] ${
+              className={`rounded-full border border-line px-5 py-2 text-sm font-semibold leading-5 tracking-[0.7px] shadow-sm transition-colors ${
                 filter === activeFilter
-                  ? 'bg-muted-brown text-white'
-                  : 'bg-peach text-heading-brown'
+                  ? 'bg-oxblood text-paper'
+                  : 'bg-peach/70 text-heading-brown hover:bg-peach-2'
               }`}
             >
               {filter}

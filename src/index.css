@@ -1,51 +1,46 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-maroon: #410416;
-  --color-wine: #5d1a2a;
-  --color-pink: #dc7f8f;
-  --color-heading-brown: #231a11;
-  --color-body-brown: #534344;
-  --color-muted-brown: #745853;
-  --color-faint-brown: #867274;
-  --color-cream: #fff8f5;
-  --color-peach: #feeadc;
-  --color-peach-2: #f8e5d7;
-  --color-border-pink: rgba(217, 193, 195, 0.5);
-  --color-border-pink-30: rgba(217, 193, 195, 0.3);
-  --color-input-border: #6b7280;
-  --color-dark-bg: #201d17;
-
-  /* Editorial palette used by the Home page hero/story sections */
-  --color-ink: #18140f;
-  --color-ink-soft: #6b6155;
-  --color-paper: #faf7f1;
-  --color-oxblood: #6b1d1d;
-  --color-gold: #c9a15a;
-  --color-line: #e4ddcf;
-
-  --font-heading: 'Playfair Display', Georgia, serif;
-  --font-body: 'Work Sans', -apple-system, Roboto, Helvetica, sans-serif;
-  --font-display: 'Fraunces', serif;
-  --font-ui: 'Inter', -apple-system, Roboto, Helvetica, sans-serif;
-  --font-label: 'JetBrains Mono', ui-monospace, monospace;
-
-  --shadow-soft: 0 4px 20px 0 rgba(62, 39, 35, 0.08);
+  --color-maroon: #5c1a1b;
+  --color-wine: #4a1718;
+  --color-pink: #f1d9c8;
+  --color-heading-brown: #2c1a14;
+  --color-body-brown: #5f5047;
+  --color-muted-brown: #806c5d;
+  --color-faint-brown: #9a8879;
+  --color-cream: #faf7f2;
+  --color-peach: #efe8dc;
+  --color-peach-2: #e7d9c8;
+  --color-border-pink: #e5ddd0;
+  --color-border-pink-30: rgba(92, 26, 27, 0.18);
+  --color-input-border: #a89584;
+  --color-dark-bg: #2c1a14;
+  --color-ink: #2c1a14;
+  --color-ink-soft: #76675d;
+  --color-paper: #faf7f2;
+  --color-oxblood: #5c1a1b;
+  --color-gold: #b58a52;
+  --color-line: #e5ddd0;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body: Arial, Helvetica, sans-serif;
+  --font-display: Georgia, 'Times New Roman', serif;
+  --font-ui: Arial, Helvetica, sans-serif;
+  --font-label: 'Courier New', monospace;
+  --shadow-soft: 0 8px 24px rgba(67, 43, 31, 0.1);
 }
 
+:root { color-scheme: light; }
+html { background: var(--color-cream); }
 body {
+  min-width: 320px;
   font-family: var(--font-body);
   color: var(--color-body-brown);
-  background: var(--color-cream);
+  background-color: var(--color-cream);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1,
-h2,
-h3,
-h4 {
-  font-family: var(--font-heading);
-  font-weight: 600;
-  color: var(--color-heading-brown);
-}
+h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 600; color: var(--color-heading-brown); }
+button, a { transition: all 180ms ease; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--color-oxblood); outline-offset: 3px; }
