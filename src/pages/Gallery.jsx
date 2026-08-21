@@ -1,7 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Navbar from '../components/Navbar.jsx'
 import Footer from '../components/Footer.jsx'
 import Container from '../components/Container.jsx'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const IMAGE = 'https://api.builder.io/api/v1/image/assets/TEMP/'
 const FILTERS = ['All', 'Atmosphere & Vibe', 'Coffee Craft', 'Fresh Bakes', 'Behind The Scenes']
@@ -20,6 +24,66 @@ function Gallery() {
   const [selected, setSelected] = useState(null)
   const photos = filter === 'All' ? PHOTOS : PHOTOS.filter((photo) => photo.category === filter)
 
+  const rootRef = useRef(null)
+  const gridRef = useRef(null)
+  const modalRef = useRef(null)
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { ease: 'power2.out' } })
+      tl.from('.gallery-eyebrow', { opacity: 0, y: 16, duration: 0.5 })
+        .from('.gallery-title', { opacity: 0, y: 24, duration: 0.6 }, '-=0.35')
+        .from('.gallery-intro', { opacity: 0, y: 16, duration: 0.5 }, '-=0.4')
+        .from('.gallery-tab', { opacity: 0, y: 10, stagger: 0.05, duration: 0.4 }, '-=0.3')
+    }, rootRef)
+    return () => ctx.revert()
+  }, [])
+
+  useLayoutEffect(() => {
+    let ctx
+    const timer = setTimeout(() => {
+      ctx = gsap.context(() => {
+        const items = gsap.utils.toArray('.gallery-item')
+
+        gsap.set(items, { opacity: 0, y: 28 })
+
+        ScrollTrigger.batch(items, {
+          start: 'top 90%',
+          once: true,
+          onEnter: (batch) => {
+            gsap.to(batch, {
+              opacity: 1,
+              y: 0,
+              duration: 0.6,
+              ease: 'power2.out',
+              stagger: 0.08,
+              overwrite: true,
+            })
+          },
+        })
+      }, gridRef)
+    }, 10)
+
+    return () => {
+      clearTimeout(timer)
+      if (ctx) ctx.revert()
+    }
+  }, [filter])
+
+  useEffect(() => {
+    if (!selected || !modalRef.current) return undefined
+    const ctx = gsap.context(() => {
+      gsap.from('.gallery-overlay', { opacity: 0, duration: 0.25, ease: 'power1.out' })
+      gsap.fromTo(
+        '.gallery-modal-image',
+        { opacity: 0, scale: 0.97 },
+        { opacity: 1, scale: 1, duration: 0.35, ease: 'power2.out' }
+      )
+      gsap.from('.gallery-modal-meta > *', { opacity: 0, y: 10, stagger: 0.05, duration: 0.35, delay: 0.1 })
+    }, modalRef)
+    return () => ctx.revert()
+  }, [selected])
+
   useEffect(() => {
     if (!selected) return undefined
     const onKeyDown = (event) => { if (event.key === 'Escape') setSelected(null) }
@@ -28,16 +92,101 @@ function Gallery() {
     return () => { document.removeEventListener('keydown', onKeyDown); document.body.style.overflow = '' }
   }, [selected])
 
-  return <div className="grain-section min-h-screen"><Navbar /><main>
-    <Container as="header" className="flex flex-col gap-7 border-b border-line py-14 md:py-20">
-      <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end"><div><p className="eyebrow">Espresso bar vol. 01</p><h1 className="mt-3 max-w-3xl text-5xl leading-[.98] tracking-[-2px] md:text-7xl">A room made of rituals.</h1></div><p className="max-w-xs text-sm leading-6 text-ink-soft">A visual notebook from our morning bake, the people behind it, and the quiet details that make Aura feel like home.</p></div>
-      <div className="flex flex-wrap gap-2" role="tablist" aria-label="Gallery categories">{FILTERS.map((item) => <button key={item} type="button" role="tab" aria-selected={filter === item} onClick={() => setFilter(item)} className={`rounded-full border px-4 py-2 font-label text-[10px] tracking-[.7px] transition ${filter === item ? 'border-oxblood bg-oxblood text-paper' : 'border-line bg-paper text-ink-soft hover:-translate-y-0.5 hover:border-oxblood hover:text-oxblood'}`}>{item}</button>)}</div>
-    </Container>
+  return (
+    <div ref={rootRef} className="grain-section min-h-screen">
+      <Navbar />
+      <main>
+        <Container as="header" className="flex flex-col gap-7 border-b border-line py-14 md:py-20">
+          <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
+            <div>
+              <p className="gallery-eyebrow eyebrow">Espresso bar vol. 01</p>
+              <h1 className="gallery-title mt-3 max-w-3xl text-5xl leading-[.98] tracking-[-2px] md:text-7xl">A room made of rituals.</h1>
+            </div>
+            <p className="gallery-intro max-w-xs text-sm leading-6 text-ink-soft">A visual notebook from our morning bake, the people behind it, and the quiet details that make Aura feel like home.</p>
+          </div>
+          <div className="flex flex-wrap gap-2" role="tablist" aria-label="Gallery categories">
+            {FILTERS.map((item) => (
+              <button
+                key={item}
+                type="button"
+                role="tab"
+                aria-selected={filter === item}
+                onClick={() => setFilter(item)}
+                className={`gallery-tab rounded-full border px-4 py-2 font-label text-[10px] tracking-[.7px] transition ${filter === item ? 'border-oxblood bg-oxblood text-paper' : 'border-line bg-paper text-ink-soft hover:-translate-y-0.5 hover:border-oxblood hover:text-oxblood'}`}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
+        </Container>
 
-    <Container as="section" className="py-10 md:py-16" aria-label="Photo gallery"><div className="grid grid-cols-1 gap-x-6 gap-y-12 md:grid-cols-3 md:gap-y-16">{photos.map((photo, index) => <button key={photo.id} type="button" onClick={() => setSelected(photo)} className={`group text-left ${photo.shape === 'hero' || photo.shape === 'wide' ? 'md:col-span-2' : ''} ${photo.shape === 'tall' ? 'md:row-span-2' : ''} ${index % 3 === 1 ? 'md:mt-8' : ''}`} aria-label={`Open ${photo.title} photo`}><figure className={`paper-frame overflow-visible transition duration-300 group-hover:-translate-y-1 ${photo.shape === 'polaroid' ? 'bg-paper p-3 pb-8' : ''}`}><div className={`relative overflow-hidden ${photo.shape === 'hero' || photo.shape === 'wide' ? 'aspect-[4/3]' : photo.shape === 'tall' ? 'aspect-[3/4]' : 'aspect-square'}`}><img src={photo.image} alt={photo.caption} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]" /><div className="absolute inset-0 bg-oxblood/0 transition group-hover:bg-oxblood/10" /><span className="absolute bottom-3 left-3 translate-y-2 rounded-full bg-paper/95 px-3 py-1 font-label text-[10px] tracking-[.7px] text-oxblood opacity-0 transition group-hover:translate-y-0 group-hover:opacity-100">{photo.title} — {photo.meta.split(' / ')[1]}</span></div><figcaption className="photo-caption flex flex-col gap-1"><span>{photo.caption}</span><span className="text-[9px] text-muted-brown">{photo.meta}</span></figcaption>{photo.shape === 'polaroid' && <span className="tape-note">field note / {String(photo.id).padStart(2, '0')}</span>}</figure></button>)}</div></Container>
-  </main><Footer variant="home" />
-  {selected && <div className="fixed inset-0 z-[60] flex items-center justify-center bg-dark-bg/95 p-4 md:p-10" role="dialog" aria-modal="true" aria-label={selected.title} onClick={() => setSelected(null)}><div className="relative flex max-h-full max-w-5xl flex-col gap-5" onClick={(event) => event.stopPropagation()}><button type="button" onClick={() => setSelected(null)} className="absolute right-0 top-0 z-10 rounded-full border border-paper/30 bg-dark-bg/70 px-3 py-2 font-label text-xs tracking-[1px] text-paper" aria-label="Close gallery image">Close</button><img src={selected.image} alt={selected.caption} className="max-h-[72vh] w-auto max-w-full object-contain" /><div className="flex flex-col gap-2 border-t border-paper/25 pt-4 text-paper"><p className="font-heading text-2xl">{selected.title}</p><p className="font-label text-xs tracking-[1px] text-gold">{selected.meta}</p><p className="text-sm text-paper/70">{selected.caption}</p></div></div></div>}
-  </div>
+        <Container as="section" className="py-10 md:py-16" aria-label="Photo gallery">
+          <div ref={gridRef} className="grid grid-cols-1 gap-x-6 gap-y-12 md:grid-cols-3 md:gap-y-16">
+            {photos.map((photo, index) => (
+              <button
+                key={photo.id}
+                type="button"
+                data-shape={photo.shape}
+                onClick={() => setSelected(photo)}
+                className={`gallery-item will-change-transform group text-left ${photo.shape === 'hero' || photo.shape === 'wide' ? 'md:col-span-2' : ''} ${photo.shape === 'tall' ? 'md:row-span-2' : ''} ${index % 3 === 1 ? 'md:mt-8' : ''}`}
+                aria-label={`Open ${photo.title} photo`}
+              >
+                <figure className={`paper-frame overflow-visible transition duration-300 group-hover:-translate-y-1 ${photo.shape === 'polaroid' ? 'bg-paper p-3 pb-8' : ''}`}>
+                  <div className={`gallery-frame relative overflow-hidden ${photo.shape === 'hero' || photo.shape === 'wide' ? 'aspect-[4/3]' : photo.shape === 'tall' ? 'aspect-[3/4]' : 'aspect-square'}`}>
+                    <img
+                      src={photo.image}
+                      alt={photo.caption}
+                      loading="lazy"
+                      decoding="async"
+                      className="gallery-img h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                    />
+                    <div className="absolute inset-0 bg-oxblood/0 transition group-hover:bg-oxblood/10" />
+                    <span className="absolute bottom-3 left-3 translate-y-2 rounded-full bg-paper/95 px-3 py-1 font-label text-[10px] tracking-[.7px] text-oxblood opacity-0 transition group-hover:translate-y-0 group-hover:opacity-100">
+                      {photo.title} — {photo.meta.split(' / ')[1]}
+                    </span>
+                  </div>
+                  <figcaption className="photo-caption flex flex-col gap-1">
+                    <span>{photo.caption}</span>
+                    <span className="text-[9px] text-muted-brown">{photo.meta}</span>
+                  </figcaption>
+                  {photo.shape === 'polaroid' && <span className="tape-note">field note / {String(photo.id).padStart(2, '0')}</span>}
+                </figure>
+              </button>
+            ))}
+          </div>
+        </Container>
+      </main>
+      <Footer variant="home" />
+
+      {selected && (
+        <div
+          ref={modalRef}
+          className="gallery-overlay fixed inset-0 z-[60] flex items-center justify-center bg-dark-bg/95 p-4 md:p-10"
+          role="dialog"
+          aria-modal="true"
+          aria-label={selected.title}
+          onClick={() => setSelected(null)}
+        >
+          <div className="relative flex max-h-full max-w-5xl flex-col gap-5" onClick={(event) => event.stopPropagation()}>
+            <button
+              type="button"
+              onClick={() => setSelected(null)}
+              className="absolute right-0 top-0 z-10 rounded-full border border-paper/30 bg-dark-bg/70 px-3 py-2 font-label text-xs tracking-[1px] text-paper"
+              aria-label="Close gallery image"
+            >
+              Close
+            </button>
+            <img src={selected.image} alt={selected.caption} className="gallery-modal-image max-h-[72vh] w-auto max-w-full object-contain" />
+            <div className="gallery-modal-meta flex flex-col gap-2 border-t border-paper/25 pt-4 text-paper">
+              <p className="font-heading text-2xl">{selected.title}</p>
+              <p className="font-label text-xs tracking-[1px] text-gold">{selected.meta}</p>
+              <p className="text-sm text-paper/70">{selected.caption}</p>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  )
 }
 
 export default Gallery

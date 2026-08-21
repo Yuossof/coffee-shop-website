@@ -28,29 +28,25 @@ const COFFEE_ITEMS = [
 
 const PASTRY_ITEMS = [
   {
-    image:
-      'https://api.builder.io/api/v1/image/assets/TEMP/c01ce618f353fd8fff69cf8616893688759b8ff0?width=540',
+    image: '/products-images/659789418_963105586058899_4732185778178039159_n.jpg',
     name: 'Opera Cake',
     price: '$7.00',
     description: 'Layers of almond sponge, coffee syrup, and chocolate ganache.',
   },
   {
-    image:
-      'https://api.builder.io/api/v1/image/assets/TEMP/abadceb25f6b50c641333474b91dea0eeb10eca4?width=540',
+    image: '/products-images/706504504_1003949605307830_4520372898328855036_n.jpg',
     name: 'Seasonal Tart',
     price: '$6.50',
     description: 'Crisp pastry shell filled with vanilla cream and fresh seasonal fruit.',
   },
   {
-    image:
-      'https://api.builder.io/api/v1/image/assets/TEMP/1848b86ceefee98f69a510ac113cebd7d1a9c4f4?width=540',
+    image: '/products-images/746067766_27473371019014758_8413840310769003627_n.jpg',
     name: 'Cinnamon Roll',
     price: '$4.00',
     description: 'Soft, pillowy dough layered with cinnamon sugar and cream cheese icing.',
   },
   {
-    image:
-      'https://api.builder.io/api/v1/image/assets/TEMP/1d027c208b6f4412488eb698d72fa1909b17275f?width=540',
+    image: '/products-images/755870616_1003120759218944_31764566279321030_n.jpg',
     name: 'Country Loaf',
     price: '$8.00',
     description: 'Our signature slow-fermented sourdough, baked to a deep golden crust.',
@@ -106,7 +102,7 @@ function Menu() {
         <section className="grid grid-cols-1 gap-8 overflow-hidden rounded-3xl bg-peach p-6 md:grid-cols-12 md:gap-12 md:p-12">
           <div className="order-1 overflow-hidden rounded-2xl shadow-[var(--shadow-soft)] md:order-2 md:col-span-7">
             <img
-              src="https://api.builder.io/api/v1/image/assets/TEMP/b7582db10f5cb88e995cb09f5570c18adb607042?width=1212"
+              src="/products-images/763895415_1754294809051162_2512378981006329488_n.jpg"
               alt="The Classic Croissant on a wooden board"
               className="h-[280px] w-full min-h-[260px] object-cover md:h-full"
             />

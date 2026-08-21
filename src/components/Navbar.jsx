@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import Button from './Button.jsx'
 import Container from './Container.jsx'
 import { IconBag } from './Icons.jsx'
@@ -15,7 +15,7 @@ function Navbar() {
     <header className="sticky top-0 z-50 w-full border-b border-line bg-cream/85 backdrop-blur-md">
       <Container className="flex h-[72px] items-center justify-between">
         <NavLink to="/" className="font-heading text-2xl font-semibold leading-8 text-maroon">
-          Aura Coffee & Bakes
+          <img src='/logo/logo.jpg' className='w-[50px] h-[50px]' alt='logo' />
         </NavLink>
 
         <nav className="hidden items-center gap-6 md:flex">
@@ -25,10 +25,9 @@ function Navbar() {
                 key={link.label}
                 to={link.to}
                 className={({ isActive }) =>
-                  `border-b-2 pb-1 text-sm font-semibold leading-5 tracking-[0.7px] ${
-                    isActive
-                      ? 'border-maroon font-bold text-maroon'
-                      : 'border-transparent text-body-brown'
+                  `border-b-2 pb-1 text-sm font-semibold leading-5 tracking-[0.7px] ${isActive
+                    ? 'border-maroon font-bold text-maroon'
+                    : 'border-transparent text-body-brown'
                   }`
                 }
               >
@@ -53,9 +52,11 @@ function Navbar() {
           >
             <IconBag />
           </button>
-          <Button variant="primary" size="sm" className="!px-4 !py-2 md:!px-6">
-            Order Online
-          </Button>
+          <Link to="/menu">
+            <Button variant="primary" size="sm" className="!px-4 !py-2 md:!px-6">
+              Menu
+            </Button>
+          </Link>
         </div>
       </Container>
     </header>

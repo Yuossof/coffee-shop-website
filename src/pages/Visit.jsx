@@ -24,7 +24,7 @@ function Visit() {
             <IconClock width="11" height="14" />
             Find Us
           </span>
-          <h1 className="text-4xl font-bold leading-tight tracking-[-1.12px] text-maroon md:text-[56px] md:leading-[64px]">
+          <h1 className="text-4xl font-bold leading-tight tracking-[-1.12px] !text-[#b69a9a] md:text-[56px] md:leading-[64px]">
             Your daily ritual,
             <br />
             grounded here.

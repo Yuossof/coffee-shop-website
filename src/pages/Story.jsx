@@ -117,7 +117,7 @@ function Story() {
           <p className="text-sm font-semibold uppercase leading-5 tracking-[1.4px] text-muted-brown">
             The Faces Behind the Bake
           </p>
-          <h2 className="text-3xl leading-10 text-maroon">Meet Our Community</h2>
+          <h2 className="text-3xl leading-10 !text-[#cab6b5]">Meet Our Community</h2>
           <p className="text-base leading-6 text-body-brown">
             Aura isn&apos;t just about the recipes; it&apos;s about the
             people who bring them to life every single day. Our team of
