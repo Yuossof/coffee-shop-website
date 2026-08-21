@@ -2,7 +2,7 @@ import { IconHeart } from './Icons.jsx'
 
 function ProductCard({ image, name, description, price }) {
   return (
-    <article className="flex h-full flex-1 flex-col overflow-hidden rounded-2xl border border-line bg-paper/80 p-2 shadow-[var(--shadow-soft)]">
+    <article className="flex h-full flex-1 flex-col overflow-hidden rounded-lg border border-line bg-paper p-2 shadow-[var(--shadow-soft)]">
       <div className="relative aspect-square overflow-hidden rounded-2xl bg-line/40">
         <img src={image} alt={name} className="h-full w-full object-cover" />
         <button

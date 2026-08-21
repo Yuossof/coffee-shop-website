@@ -1,6 +1,6 @@
 function MenuImageCard({ image, name, price, description }) {
   return (
-    <article className="flex h-full flex-1 flex-col overflow-hidden rounded-2xl border border-line bg-paper/80 shadow-[var(--shadow-soft)]">
+    <article className="flex h-full flex-1 flex-col overflow-hidden rounded-lg border border-line bg-paper shadow-[var(--shadow-soft)]">
       <div className="aspect-[4/3]">
         <img src={image} alt={name} className="h-full w-full object-cover" />
       </div>

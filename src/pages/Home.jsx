@@ -1,203 +1,46 @@
+import { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar.jsx'
 import Footer from '../components/Footer.jsx'
 import Button from '../components/Button.jsx'
 import Container from '../components/Container.jsx'
-import SectionIntro from '../components/SectionIntro.jsx'
 import ProductCard from '../components/ProductCard.jsx'
-import StatCard from '../components/StatCard.jsx'
-import {
-  IconPeople,
-  IconStar,
-  IconWheat,
-  IconLocationRibbon,
-  IconArrowRight,
-  IconMapPin,
-} from '../components/Icons.jsx'
+import { IconArrowRight, IconMapPin, IconStar } from '../components/Icons.jsx'
 
+const IMAGE = 'https://api.builder.io/api/v1/image/assets/TEMP/'
 const FAVORITES = [
-  {
-    image:
-      'https://api.builder.io/api/v1/image/assets/TEMP/c12038127af96632ed9135c79deefe363e821009?width=528',
-    name: 'Butter Croissant',
-    description: 'Flaky, golden and made with real, high-quality European butter.',
-    price: '4.50',
-  },
-  {
-    image:
-      'https://api.builder.io/api/v1/image/assets/TEMP/09b9e31c18034d83946ec81875b884caa82a7b07?width=528',
-    name: 'Iced Latte',
-    description: 'Smooth artisanal espresso layered with cold milk, poured over ice.',
-    price: '5.50',
-  },
-  {
-    image:
-      'https://api.builder.io/api/v1/image/assets/TEMP/38724c49d98de612cb400af71be48722b3a5c0bf?width=528',
-    name: 'Berry Danish',
-    description: 'Buttery laminated dough encasing seasonal mixed berries and vanilla…',
-    price: '5.00',
-  },
-  {
-    image:
-      'https://api.builder.io/api/v1/image/assets/TEMP/22737b70d859c9148306f7ed4ba269b4b2a41e87?width=528',
-    name: 'Sourdough Loaf',
-    description: 'Slow-fermented for 48 hours for rich flavor and a perfectly chewy…',
-    price: '8.00',
-  },
+  { image: `${IMAGE}c12038127af96632ed9135c79deefe363e821009?width=528`, name: 'Butter Croissant', description: 'Flaky, golden and made with European butter.', price: '4.50' },
+  { image: `${IMAGE}09b9e31c18034d83946ec81875b884caa82a7b07?width=528`, name: 'Iced Latte', description: 'Smooth espresso layered with cold milk.', price: '5.50' },
+  { image: `${IMAGE}38724c49d98de612cb400af71be48722b3a5c0bf?width=528`, name: 'Berry Danish', description: 'Laminated dough with seasonal berries.', price: '5.00' },
+  { image: `${IMAGE}22737b70d859c9148306f7ed4ba269b4b2a41e87?width=528`, name: 'Sourdough Loaf', description: 'Slow-fermented for a rich, chewy crumb.', price: '8.00' },
 ]
 
-function Home() {
-  return (
-    <div id="top">
-      <Navbar />
-
-      <section className="overflow-hidden py-12 pb-24 md:pt-22">
-        <Container className="flex flex-col items-center gap-8 md:flex-row md:gap-16">
-          <div className="flex flex-1 flex-col items-start gap-6 md:pr-8">
-            <span className="relative pb-2.5 font-label text-xs font-medium uppercase tracking-[2px] text-oxblood after:absolute after:bottom-0 after:left-0 after:h-px after:w-8 after:bg-oxblood">
-              Est. 2024
-            </span>
-            <h1 className="font-display text-[40px] font-medium leading-[1.05] tracking-[-1.5px] text-ink md:text-[60px]">
-              Artisanal Coffee &amp;
-              <br />
-              Hand-Crafted
-              <br />
-              Pastries
-            </h1>
-            <p className="max-w-[420px] font-ui text-base leading-relaxed text-ink-soft md:text-[17px]">
-              Savor the moment in our cozy corner. Handmade coffee, soft
-              sourdoughs, and slow-fermented pastries — crafted each morning
-              to bring a touch of quiet luxury to your daily ritual.
-            </p>
-            <div className="flex w-full items-center gap-4 pt-3 sm:w-auto sm:flex-row">
-              <Button to="/menu" variant="primary">
-                View Menu
-              </Button>
-              <Button variant="outline">Order Online</Button>
-            </div>
-          </div>
-
-          <div className="relative w-full flex-1 md:h-[640px]">
-            <div className="relative h-[280px] w-full rounded-2xl border border-line bg-paper p-3 shadow-[0_16px_30px_rgba(67,43,31,0.16)] md:h-full md:p-4">
-              <img
-                src="https://api.builder.io/api/v1/image/assets/TEMP/d8b655d97a49cd5daa2d57af77fef0d04138230a?width=1104"
-                alt="Latte and croissant on a wooden table"
-                className="relative z-10 h-full w-full rounded-xl object-cover"
-              />
-              <div className="absolute bottom-6 left-6 z-20 flex max-w-[260px] -rotate-2 items-center gap-3.5 rounded border border-ink bg-paper px-5 py-4 shadow-[0_8px_24px_rgba(24,20,15,0.15)]">
-                <span className="flex shrink-0 text-oxblood">
-                  <IconStar width="14" height="14" />
-                </span>
-                <div>
-                  <p className="font-display text-sm font-semibold text-ink">Freshly Baked</p>
-                  <p className="font-label text-[11px] tracking-[0.4px] text-ink-soft">
-                    Every morning — 6:00 AM
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      <Container>
-        <div className="flex flex-col gap-6 border-y border-line py-10 sm:flex-row sm:gap-0">
-          <StatCard icon={<IconPeople />} value="10K+" label="Happy Customers" />
-          <StatCard icon={<IconStar />} value="4.9" label="Average Rating" bordered />
-          <StatCard icon={<IconWheat />} value="Handmade" label="Real Ingredients" bordered />
-        </div>
-      </Container>
-
-      <section className="pt-16 md:pt-24">
-        <Container>
-          <div className="flex flex-col gap-10 md:gap-14">
-            <SectionIntro
-              tag="Our Favorites"
-              title="Made for Moments Like These"
-              divider
-            />
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4 md:gap-10">
-              {FAVORITES.map((item) => (
-                <ProductCard key={item.name} {...item} />
-              ))}
-            </div>
-            <div className="flex justify-center border-t border-line pt-2">
-              <Button to="/menu" variant="outline-maroon">
-                View Full Menu
-              </Button>
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      <Container>
-        <div className="flex flex-col items-center gap-8 border-t border-line py-14 md:flex-row md:gap-18 md:py-24">
-          <div className="h-[340px] w-full flex-1 overflow-hidden rounded-[20px] shadow-[0_20px_40px_-16px_rgba(24,20,15,0.25)] md:h-[560px]">
-            <img
-              src="https://api.builder.io/api/v1/image/assets/TEMP/e2b8f44aac46a6980a389d28a5d601515cc2cc26?width=1088"
-              alt="Baker kneading dough"
-              className="h-full w-full object-cover"
-            />
-          </div>
-          <div className="flex flex-1 flex-col items-start gap-4 md:pl-4">
-            <SectionIntro align="left" tag="Our Story" />
-            <h2 className="font-display text-[28px] font-medium leading-[1.25] text-ink md:text-[34px]">
-              Crafted with Intention, Baked
-              <br />
-              with Love.
-            </h2>
-            <p className="font-ui text-sm leading-[1.7] text-ink-soft">
-              Aura Coffee & Bakes began with a simple belief: the best moments
-              in life are often the quietest, accompanied by the perfect cup of
-              coffee and a pastry made with genuine care.
-            </p>
-            <p className="font-ui text-sm leading-[1.7] text-ink-soft">
-              We source our beans from ethical, small-batch roasters who share
-              our passion for quality. Our bakers arrive before dawn, using
-              traditional European techniques and long fermentation processes
-              to create breads and pastries that are as nourishing as they are
-              delicious.
-            </p>
-            <p className="font-ui text-sm leading-[1.7] text-ink-soft">
-              Every detail of our space, from the warm lighting to the
-              comfortable seating, is designed to offer you a brief, beautiful
-              respite from the busy world outside.
-            </p>
-            <a
-              href="#top"
-              className="inline-flex items-center gap-2 pt-4 font-label text-[13px] tracking-[0.5px] text-oxblood"
-            >
-              Read More About Us <IconArrowRight />
-            </a>
-          </div>
-        </div>
-      </Container>
-
-      <Container>
-        <div className="mb-16 flex flex-col items-start gap-6 rounded-3xl bg-[linear-gradient(135deg,var(--color-oxblood)_0%,#4a1414_100%)] px-8 py-10 shadow-[0_24px_48px_-16px_rgba(107,29,29,0.4)] md:flex-row md:items-center md:justify-between md:px-16 md:py-14">
-          <div className="flex items-center gap-6">
-            <span className="flex h-14 w-14 shrink-0 items-center justify-center border border-white/25 text-paper">
-              <IconLocationRibbon />
-            </span>
-            <div>
-              <h3 className="mb-1.5 font-display text-[22px] font-medium leading-[1.3] text-paper md:text-[28px]">
-                Good coffee. Warm hearts.
-              </h3>
-              <p className="font-ui text-sm leading-relaxed text-paper/65">
-                Come visit our cozy corner and find your new favorite daily
-                ritual.
-              </p>
-            </div>
-          </div>
-          <Button to="/visit" variant="white">
-            <IconMapPin width="14" height="17" />
-            Find Our Location
-          </Button>
-        </div>
-      </Container>
-
-      <Footer variant="home" />
-    </div>
-  )
+function Countdown() {
+  const [left, setLeft] = useState(0)
+  useEffect(() => {
+    const tick = () => { const now = new Date(); const next = new Date(now); next.setHours(6, 0, 0, 0); if (next <= now) next.setDate(next.getDate() + 1); setLeft(next - now) }
+    tick(); const timer = setInterval(tick, 1000); return () => clearInterval(timer)
+  }, [])
+  const hours = String(Math.floor(left / 3600000)).padStart(2, '0')
+  const minutes = String(Math.floor((left % 3600000) / 60000)).padStart(2, '0')
+  const seconds = String(Math.floor((left % 60000) / 1000)).padStart(2, '0')
+  return <span className="font-label text-xs tracking-[1px] text-oxblood">Next bake in {hours}:{minutes}:{seconds}</span>
 }
 
+function Home() {
+  return <div id="top"><Navbar />
+    <main>
+      <section className="border-b border-line py-12 md:py-20"><Container className="grid items-center gap-10 md:grid-cols-[0.9fr_1.1fr] md:gap-20">
+        <div className="order-2 flex flex-col items-start gap-6 md:order-1"><p className="eyebrow">Independent coffee house / est. 2024</p><h1 className="max-w-xl text-5xl leading-[.98] tracking-[-2px] md:text-7xl">Coffee, baked slowly.</h1><p className="max-w-md text-base leading-7 text-ink-soft">A small, thoughtful corner for excellent coffee, long-fermented bread, and the quiet rituals that make a day feel considered.</p><div className="flex flex-wrap gap-3"><Button to="/menu" variant="primary">Explore the menu</Button><Button to="/story" variant="outline">Our approach <IconArrowRight /></Button></div><div className="flex items-center gap-3 border-t border-line pt-5"><IconStar width="16" height="16" /><span className="font-label text-xs tracking-[1px] text-ink-soft">Roasted weekly / baked daily / served warmly</span></div></div>
+        <div className="order-1 md:order-2"><figure className="paper-frame aspect-[3/2]"><img src={`${IMAGE}d8b655d97a49cd5daa2d57af77fef0d04138230a?width=1104`} alt="Latte and croissant on a wooden table" className="h-full w-full object-cover" /><figcaption className="tape-note">morning ritual no. 01</figcaption></figure></div>
+      </Container></section>
+
+      <section className="py-16 md:py-24"><Container><div className="mb-10 flex flex-col justify-between gap-4 border-b border-line pb-5 md:flex-row md:items-end"><div><p className="eyebrow">The morning bake</p><h2 className="mt-2 text-4xl md:text-5xl">Fresh from the oven</h2></div><Countdown /></div><div className="grid gap-8 md:grid-cols-3"><div className="md:col-span-2"><div className="grid gap-5 sm:grid-cols-2">{['Mix & rest / 04:00', 'Shape & proof / 05:00', 'Bake & share / 06:00', 'Save one for later / always'].map((step, i) => <div key={step} className="border-l-2 border-oxblood pl-5 py-3"><span className="font-label text-xs text-oxblood">0{i + 1}</span><h3 className="mt-3 text-2xl">{step.split(' / ')[0]}</h3><p className="mt-2 text-sm leading-6 text-ink-soft">Time, temperature, and patience are the only shortcuts we take.</p></div>)}</div></div><aside className="border border-line bg-peach p-6 md:p-8"><p className="eyebrow">Today’s note</p><p className="mt-5 text-2xl leading-tight">The croissants are especially good before the city wakes up.</p><p className="mt-8 font-label text-xs text-ink-soft">— baker’s log / 08.21.26</p></aside></div></Container></section>
+
+      <section className="border-y border-line bg-paper py-16 md:py-24"><Container><div className="grid gap-12 md:grid-cols-[.75fr_1.25fr] md:gap-24"><div><p className="eyebrow">A cup with a point of view</p><h2 className="mt-3 text-4xl leading-tight md:text-5xl">Trace the flavor back to the farm.</h2><p className="mt-6 max-w-sm text-sm leading-7 text-ink-soft">Our rotating coffee is selected for clarity and character, then brewed to let the place it came from speak.</p><a href="/story" className="mt-8 inline-flex items-center gap-2 font-label text-xs tracking-[1px] text-oxblood">Read the sourcing notes <IconArrowRight /></a></div><div className="grid grid-cols-2 border-t border-l border-line"><div className="origin-cell"><span className="eyebrow">Origin</span><strong>Huila, Colombia</strong></div><div className="origin-cell"><span className="eyebrow">Elevation</span><strong>1,700 masl</strong></div><div className="origin-cell"><span className="eyebrow">Process</span><strong>Washed</strong></div><div className="origin-cell"><span className="eyebrow">Notes</span><strong>Stone fruit / cacao</strong></div></div></div></Container></section>
+
+      <section className="py-16 md:py-24"><Container><div className="mb-10 flex items-end justify-between border-b border-line pb-5"><div><p className="eyebrow">A considered pairing</p><h2 className="mt-2 text-4xl md:text-5xl">Brewed for the bite.</h2></div><span className="hidden font-label text-xs text-ink-soft sm:block">two good things / one quiet moment</span></div><div className="grid gap-6 md:grid-cols-4">{FAVORITES.map((item) => <ProductCard key={item.name} {...item} />)}</div></Container></section>
+
+      <section className="pb-16 md:pb-24"><Container><div className="grid gap-5 md:grid-cols-12 md:grid-rows-2"><figure className="paper-frame md:col-span-7 md:row-span-2"><img src={`${IMAGE}e2b8f44aac46a6980a389d28a5d601515cc2cc26?width=1088`} alt="Baker working dough in the kitchen" className="h-full min-h-[360px] w-full object-cover" /><figcaption className="tape-note">hands at work</figcaption></figure><figure className="paper-frame md:col-span-5"><img src={`${IMAGE}38724c49d98de612cb400af71be48722b3a5c0bf?width=528`} alt="Berry danish on a plate" className="aspect-[4/3] w-full object-cover" /><figcaption className="photo-caption">seasonal / not forever</figcaption></figure><div className="flex items-end border border-line bg-peach p-7 md:col-span-5"><div><p className="eyebrow">Come as you are</p><h3 className="mt-3 text-3xl">A good place to pause.</h3><Button to="/visit" variant="outline-maroon" className="mt-6"><IconMapPin width="14" height="17" /> Find us</Button></div></div></div></Container></section>
+    </main><Footer variant="home" /></div>
+}
 export default Home

@@ -2,7 +2,7 @@ import { IconPlus } from './Icons.jsx'
 
 function MenuListItem({ name, price, description }) {
   return (
-    <article className="flex min-h-[210px] flex-1 flex-col justify-between gap-4 rounded-2xl border border-line bg-paper/80 p-6 shadow-[var(--shadow-soft)]">
+    <article className="flex min-h-[210px] flex-1 flex-col justify-between gap-4 rounded-lg border border-line bg-paper p-6 shadow-[var(--shadow-soft)]">
       <div className="flex flex-col gap-2">
         <div className="flex items-start justify-between gap-3">
           <h3 className="text-2xl leading-8 text-heading-brown">{name}</h3>

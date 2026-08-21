@@ -13,7 +13,7 @@ const NAV_LINKS = [
 function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-line bg-cream/85 backdrop-blur-md">
-      <Container className="flex h-20 items-center justify-between">
+      <Container className="flex h-[72px] items-center justify-between">
         <NavLink to="/" className="font-heading text-2xl font-semibold leading-8 text-maroon">
           Aura Coffee & Bakes
         </NavLink>
