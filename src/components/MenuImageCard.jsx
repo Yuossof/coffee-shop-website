@@ -1,17 +1,17 @@
 function MenuImageCard({ image, name, price, description }) {
   return (
-    <article className="flex h-full flex-1 flex-col overflow-hidden rounded-lg border border-line bg-paper shadow-[var(--shadow-soft)]">
-      <div className="aspect-[4/3]">
+    <article className="flex h-full flex-1 flex-col gap-5">
+      <div className="relative aspect-square overflow-hidden rounded-2xl bg-line/40">
         <img src={image} alt={name} className="h-full w-full object-cover" />
       </div>
-      <div className="flex flex-col gap-2 px-5 pb-9 pt-5">
-        <div className="flex items-start justify-between gap-2">
-          <h3 className="text-xl leading-7 text-heading-brown">{name}</h3>
-          <span className="whitespace-nowrap text-sm font-semibold leading-5 tracking-[0.7px] text-maroon">
+      <div className="flex flex-col gap-2">
+        <div className="flex items-start justify-between gap-3">
+          <h3 className="font-display text-lg font-medium text-ink">{name}</h3>
+          <span className="whitespace-nowrap font-label text-xs font-medium tracking-[0.5px] text-oxblood">
             {price}
           </span>
         </div>
-        <p className="text-sm leading-5 text-body-brown">{description}</p>
+        <p className="text-sm leading-relaxed text-ink-soft">{description}</p>
       </div>
     </article>
   )
