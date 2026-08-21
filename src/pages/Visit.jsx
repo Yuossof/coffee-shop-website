@@ -44,7 +44,7 @@ function Visit() {
           </div>
         </div>
 
-        <div className="relative h-[320px] min-h-[320px] overflow-hidden rounded-2xl shadow-[var(--shadow-soft)] md:col-span-7 md:h-[480px] md:min-h-[400px]">
+        <div className="photo-frame relative h-[320px] min-h-[320px] md:col-span-7 md:h-[480px] md:min-h-[400px]">
           <img
             src="https://api.builder.io/api/v1/image/assets/TEMP/e2fcaa45a9da798bb5dc213bff0b9d0b037722da?width=1324"
             alt="Aura Coffee & Bakes storefront"

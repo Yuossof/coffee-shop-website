@@ -132,7 +132,7 @@ function Home() {
 
       <Container>
         <div id="story" className="flex flex-col items-center gap-8 border-t border-line py-14 md:flex-row md:gap-18 md:py-24">
-          <div className="h-[340px] w-full flex-1 overflow-hidden rounded-[20px] border border-ink shadow-[7px_7px_0_var(--color-gold)] md:h-[560px]">
+          <div className="photo-frame h-[340px] w-full flex-1 md:h-[560px]">
             <img
               src="https://api.builder.io/api/v1/image/assets/TEMP/e2b8f44aac46a6980a389d28a5d601515cc2cc26?width=1088"
               alt="Baker kneading dough"

@@ -103,7 +103,7 @@ function Menu() {
           </div>
         </section>
 
-        <section className="grid grid-cols-1 gap-8 overflow-hidden rounded-3xl bg-peach p-6 md:grid-cols-12 md:gap-12 md:p-12">
+        <section className="grid grid-cols-1 gap-8 overflow-hidden border border-line bg-peach p-6 shadow-[6px_6px_0_var(--color-line)] md:grid-cols-12 md:gap-12 md:p-12">
           <div className="order-1 overflow-hidden rounded-2xl shadow-[var(--shadow-soft)] md:order-2 md:col-span-7">
             <img
               src="https://api.builder.io/api/v1/image/assets/TEMP/b7582db10f5cb88e995cb09f5570c18adb607042?width=1212"

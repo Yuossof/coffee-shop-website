@@ -31,7 +31,7 @@ function Story() {
               Read Our Manifesto
             </Button>
           </div>
-          <div className="relative h-[280px] w-full flex-1 overflow-hidden rounded-2xl shadow-[var(--shadow-soft)] md:h-[600px]">
+          <div className="photo-frame relative h-[280px] w-full flex-1 md:h-[600px]">
             <img
               src="https://api.builder.io/api/v1/image/assets/TEMP/80de57d57aec0f1c44555d7ffbb36a6df1ddb0c0?width=1056"
               alt="Barista pouring latte art"
@@ -54,7 +54,7 @@ function Story() {
           </div>
 
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 md:[grid-template-rows:300px_300px]">
-            <div className="relative min-h-[280px] overflow-hidden rounded-2xl shadow-[var(--shadow-soft)] sm:col-span-2">
+            <div className="photo-frame relative min-h-[280px] sm:col-span-2">
               <img
                 src="https://api.builder.io/api/v1/image/assets/TEMP/a00c83392117d07009b07c83a77ae4eca06a7149?width=1520"
                 alt="Baker kneading dough"
@@ -80,7 +80,7 @@ function Story() {
               </p>
             </div>
 
-            <div className="min-h-[280px] overflow-hidden rounded-2xl shadow-[var(--shadow-soft)]">
+            <div className="photo-frame min-h-[280px]">
               <img
                 src="https://api.builder.io/api/v1/image/assets/TEMP/c5129ea562dac57bc67501525aa9f29fea84dfed?width=736"
                 alt="Espresso machine pouring coffee"
@@ -106,7 +106,7 @@ function Story() {
       </section>
 
       <Container className="flex flex-col items-center gap-8 py-16 md:flex-row md:gap-16 md:py-24">
-        <div className="h-[360px] w-full flex-1 overflow-hidden rounded-2xl shadow-[var(--shadow-soft)] md:h-[500px] md:rounded-t-full">
+        <div className="photo-frame h-[360px] w-full flex-1 md:h-[500px]">
           <img
             src="https://api.builder.io/api/v1/image/assets/TEMP/88a0a501a65538ddadb8a797d09aba3cb52c95e4?width=1088"
             alt="Bakers holding bread trays"
